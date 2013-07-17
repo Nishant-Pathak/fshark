@@ -19,8 +19,11 @@ System Requirement :
 
 If you have prior knowledge of following will help you a lot.
 1. php
+
 2. angularjs
+
 3. bootstrap
+
 4. tshark commands
 
 
