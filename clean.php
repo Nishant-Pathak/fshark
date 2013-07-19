@@ -1,5 +1,6 @@
 <?php
-session_start();
+include_once("include/header.php");
+include_once("navbar.php");
 $output;
 $error;
 exec("rm -rf caps/*", $output, $error);
@@ -8,4 +9,5 @@ if($error != 0)
 else
     echo "Everything crystal clear.";
 
+include_once("include/footer.php");
 ?>

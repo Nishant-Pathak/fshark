@@ -1,7 +1,7 @@
 <?php
 namespace fshark;
-session_start();
 include_once("include/header.php");
+include_once("navbar.php");
 ?>
 
 <?
@@ -27,15 +27,15 @@ $protoArr = array();
 
 if(count($lines) != 0){
 ?>
-    <table border="1">
+    <table class="table table-bordered table-hover table-condensed">
     <tr>
-      <td><h3>No.</h3></td>
-      <td><h3>Time</h3></td>
-      <td><h3>Source</h3></td>
-      <td><h3>Destination</h3></td>
-      <td><h3>Protocol</h3></td>
-      <td><h3>Length</h3></td>
-      <td><h3>Info</h3></td> 
+      <th>No.</th>
+      <th>Time</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Protocol</th>
+      <th>Length</th>
+      <th>Info</th>
     </tr>
 <?
     foreach ($lines as $line_num => $line) {

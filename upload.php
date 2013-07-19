@@ -3,7 +3,6 @@ namespace fShark;
 include_once("include/header.php");
 $allowedExts = array("pcap");
 if(isset($_FILES["cap"])){
-    session_start();
     $temp = explode(".", $_FILES["cap"]["name"]);
     $extension = end($temp);
     if ($_FILES["cap"]["error"] > 0)
