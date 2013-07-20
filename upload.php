@@ -1,7 +1,7 @@
 <?php
 namespace fShark;
 include_once("include/header.php");
-$allowedExts = array("pcap");
+$allowedExts = array("pcap", "pcapng");
 if(isset($_FILES["cap"])){
     $temp = explode(".", $_FILES["cap"]["name"]);
     $extension = end($temp);
