@@ -9,7 +9,6 @@ function uploadCapController($scope){
 
 function navigationbar($scope){
 
-//  $url = window.location.pathname.substring(1);
   
 }
 
