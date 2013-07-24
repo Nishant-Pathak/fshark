@@ -34,7 +34,7 @@ class nitro{
       $output;
       $error;
       if(!file_exists("caps/".$file_name.".txt")){
-         exec("tshark -i - <"."caps/".$file_name." > caps/".$file_name.".txt", $output , $error);
+         exec("tshark -r "."caps/".$file_name." > caps/".$file_name.".txt", $output , $error);
       }
       if($error != 0){
          $this->response->set_errorcode(-1);
@@ -57,17 +57,18 @@ class nitro{
 
       if(count($lines) != 0){
          foreach ($lines as $line_num => $line) {
-            $returnValue = preg_split('/( | -> |->)/', $line, 6, PREG_SPLIT_NO_EMPTY);
-            $time = $returnValue[0];
-            $src = $returnValue[1];
-            $dst = $returnValue[2];
-            $proto = $returnValue[3];
-            $length = $returnValue[4];
-            $info = $returnValue[5];
+            $returnValue = preg_split('/( | -> |->)/', $line, 7, PREG_SPLIT_NO_EMPTY);
+            $pktnum = $returnValue[0];
+            $time = $returnValue[1];
+            $src = $returnValue[2];
+            $dst = $returnValue[3];
+            $proto = $returnValue[4];
+            $length = $returnValue[5];
+            $info = $returnValue[6];
             if(!in_array($proto, $protoArr))
                array_push($protoArr,$proto);
             $color = $colors[array_search($proto, $protoArr)];
-            $capResopnse[$line_num] = array("number" => $line_num+1, "time"   => $time,
+            $capResopnse[$line_num] = array("number" => $pktnum, "time"   => $time,
                                         "src"    => $src       , "dst"    => $dst,
                                         "proto"  => $proto     , "length" => $length,
                                         "info"   => $info      , "color"  => $color
