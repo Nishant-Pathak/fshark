@@ -24,17 +24,23 @@ class nitro{
    public function processReq(){
       $arg_list = func_get_args();
       $args = preg_split("/[=]+/", $arg_list[1], -1, PREG_SPLIT_NO_EMPTY);
-      $this->processCapReq($args[1]);
+      $disp_filter = "";
+      $this->processCapReq($args[1],$disp_filter);
       $this->send_response();
    }
 
-   private function processCapReq($tmp_file_name){
+   private function processCapReq($tmp_file_name, $disp_filter){
       $capResopnse = array();
       $file_name = $_SESSION["caps"][$tmp_file_name];
       $output;
       $error;
-      if(!file_exists("caps/".$file_name.".txt")){
-         exec("tshark -r "."caps/".$file_name." > caps/".$file_name.".txt", $output , $error);
+      if($disp_filter != ""){
+         exec("tshark -r "."caps/".$file_name." -R \"".$disp_filter."\" > caps/".$file_name.".txt", $output , $error);
+      }
+      else {
+         //if(!file_exists("caps/".$file_name.".txt")){
+            exec("tshark -r "."caps/".$file_name." > caps/".$file_name.".txt", $output , $error);
+         //}
       }
       if($error != 0){
          $this->response->set_errorcode(-1);
