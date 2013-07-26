@@ -4,7 +4,7 @@ include_once("include/header.php");
 include_once("navbar.php");
 ?>
    <div ng-controller="explorepkt">
-      <select ng-model="cap">
+      Capture Files: <select ng-model="cap">
 <?
    if(isset($_SESSION["caps"]))
       foreach($_SESSION["caps"] as $key => $value){
@@ -14,9 +14,9 @@ include_once("navbar.php");
    }
 ?>
       </select>
-      <button ng-click="fetch()">fetch</button><br>
-      <pre>http status code: {{status}}</pre>
-
+      Filter: <input type="text" ng-model="filter" typeahead="filter for filter in availableFilters | filter:$viewValue">
+      <button class="btn" ng-click="fetch()">Filter</button></br>
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert></br>
     <table class="table table-bordered table-hover table-condensed">
     <tr>
       <th>No.</th>

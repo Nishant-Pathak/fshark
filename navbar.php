@@ -13,6 +13,7 @@ $path = substr($_SERVER['REQUEST_URI'],1);
             </p>
             <ul class="nav">
               <li <?if($path == "") echo "class='active'"; ?>><a href="/">Home</a></li>
+              <li <?if($path == "explore.php") echo "class='active'"; ?>><a href="/explore.php">Explore</a></li>
               <li <?if($path == "about.php") echo "class='active'"; ?>><a href="/about.php">About</a></li>
               <li <?if($path == "contact.php") echo "class='active'"; ?>><a href="/contact.php">Contact</a></li>
             </ul>

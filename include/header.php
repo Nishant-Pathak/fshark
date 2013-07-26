@@ -2,7 +2,7 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="cloudShark">
 <head>
   <meta charset="utf-8">
   <title>Packet Analyzer</title>

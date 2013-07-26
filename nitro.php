@@ -5,13 +5,11 @@ include_once("include/nitro_response.php");
 
 $request_uri = $_SERVER["REQUEST_URI"];
 
-$segments = preg_split("/[?]+/", $request_uri, -1, PREG_SPLIT_NO_EMPTY);
-
 session_start();
 
 $obj = new nitro();
 
-call_user_func_array(array($obj,"processReq"), $segments);
+call_user_func_array(array($obj,"processReq"), array());
 
 class nitro{
 
@@ -22,10 +20,12 @@ class nitro{
    }
 
    public function processReq(){
-      $arg_list = func_get_args();
-      $args = preg_split("/[=]+/", $arg_list[1], -1, PREG_SPLIT_NO_EMPTY);
-      $disp_filter = "";
-      $this->processCapReq($args[1],$disp_filter);
+      $args = $_GET;
+      if($this->checkArgsForError($args)){
+         $this->send_response();
+         exit(0);
+      }
+      $this->processCapReq($args["cap"],$args["filter"]);
       $this->send_response();
    }
 
@@ -34,18 +34,21 @@ class nitro{
       $file_name = $_SESSION["caps"][$tmp_file_name];
       $output;
       $error;
-      if($disp_filter != ""){
-         exec("tshark -r "."caps/".$file_name." -R \"".$disp_filter."\" > caps/".$file_name.".txt", $output , $error);
+      if($disp_filter != "" && $disp_filter != "undefined"){
+         exec("tshark -r "."caps/".$file_name." -R \"".$disp_filter."\" 2>&1 > caps/".$file_name.".txt", $output , $error);
+         if($error != 0){
+            $this->response->set_errorcode(-1);
+            $this->response->set_message($output);
+            return false;
+         }
       }
       else {
-         //if(!file_exists("caps/".$file_name.".txt")){
-            exec("tshark -r "."caps/".$file_name." > caps/".$file_name.".txt", $output , $error);
-         //}
-      }
-      if($error != 0){
-         $this->response->set_errorcode(-1);
-         $this->response->set_message("Unable to open cap file !!!");
-         return false;
+         exec("tshark -r "."caps/".$file_name." 2>&1 > caps/".$file_name.".txt", $output , $error);
+         if($error != 0){
+            $this->response->set_errorcode(-1);
+            $this->response->set_message($output);
+            return false;
+         }
       }
 
       $lines = file("caps/".$file_name.".txt");
@@ -85,6 +88,16 @@ class nitro{
       else {
          // nothing to display
       }
+   }
+   private function checkArgsForError($args){
+      foreach($args as $key => $value){
+         if($key == "cap" && $value == "undefined"){
+            $this->response->set_errorcode(-1);
+            $this->response->set_message("Plese provide valid cap file");
+            return true;
+         }
+      }
+      return false;
    }
 
    private function send_response(){
