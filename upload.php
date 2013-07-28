@@ -1,7 +1,9 @@
 <?php
 namespace fShark;
 include_once("include/header.php");
-$allowedExts = array("pcap", "pcapng");
+include_once("include/lib.php");
+
+$allowedExts = array("pcap", "pcapng", "gz");
 if(isset($_FILES["cap"])){
    $temp = explode(".", $_FILES["cap"]["name"]);
    $extension = end($temp);
@@ -10,8 +12,10 @@ if(isset($_FILES["cap"])){
       echo "Error: " . $_FILES["cap"]["error"] . "<br>";
    }
    elseif(!in_array($extension, $allowedExts)){
-      echo "Not supported file type";
-      echo "File name with format ".$extension." not supported";
+      echo "<span>Not supported file type.</br>";
+      echo "File name with format ".$extension." not supported</br></span>";
+      echo "<a href='/'>Return to home page</a></br>";
+      return;
    }   
    else
    {   
@@ -22,8 +26,10 @@ if(isset($_FILES["cap"])){
    }
    $tmp_file_name = $_FILES['cap']['tmp_name'];
    $file_name = session_id().$_FILES["cap"]["name"];
-   if(!isset($_SESSION["caps"]))
+   if(!isset($_SESSION["caps"])){
       $_SESSION["caps"] = array();
+   }
+   SetMyCookie("lastFile", $_FILES["cap"]["name"]);
     
    $_SESSION["caps"][$_FILES["cap"]["name"]]  = $file_name;
    move_uploaded_file($tmp_file_name, 'caps/'.$file_name);

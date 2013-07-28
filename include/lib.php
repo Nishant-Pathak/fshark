@@ -22,7 +22,7 @@ function SetMyCookie($CookieName, $CookieValue)
         '/',                    // path
         NULL,                    // domain
         $Secure,                 // secure flag
-        true                     // http only access
+        false                     // http only access
     );
 }
 ?>

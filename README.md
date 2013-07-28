@@ -13,7 +13,9 @@ System Requirement :
     
 2. Provide access to write to caps folder.
 
-3. TShark 1.6.7 
+3. TShark 1.6.7
+
+4. Supported file format are .pacap , .gz 
 
 ###########################
 

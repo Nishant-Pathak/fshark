@@ -2,10 +2,9 @@
 namespace fshark;
 include_once("include/nitro_response.php");
 
+session_start();
 
 $request_uri = $_SERVER["REQUEST_URI"];
-
-session_start();
 
 $obj = new nitro();
 
@@ -102,8 +101,6 @@ class nitro{
 
    private function send_response(){
       header("Content-type: application/json; charset=utf-8");
-      //   if($_SERVER["REQUEST_METHOD"] === "GET")
-      //     ob_start("ob_gzhandler");
       print $this->response->to_string();
    }
 }

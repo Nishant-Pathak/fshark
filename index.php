@@ -9,8 +9,11 @@ include_once("navbar.php");
   <form name="uploadCap" enctype="multipart/form-data" ng-controller="uploadCapController" ng-submit="submit()" method="POST" action="upload.php">
     <fieldset>
       <legend>Provide Packet Capture</legend>
-      Capture file: <input id="cap" ng-model="cap" name="cap" required type="file" accept="application/vnd.tcpdump.pcap">
-      <span class="help-block">currently support file with pcap extension.</span>
+      Capture file: <input id="cap" ng-model="cap" name="cap" required type="file" accept="application/vnd.tcpdump.pcap, application/x-gzip">
+      <hr />
+      <span class="help-block">Upload Network capture files. Now you can upload </br> 
+                               gzip compressed and rar files too. We support upload files </br>
+                               upto 30 MB .</span>
       <input type="submit" value="Submit" class="btn">
     </fieldset>
   </form>
