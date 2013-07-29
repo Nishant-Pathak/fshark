@@ -7,10 +7,11 @@ include_once("navbar.php");
    <div ng-controller="explorepkt" ng-init="defaultFetch()">
       Capture Files: <select ng-model="cap">
 <?
-   if(isset($_SESSION["caps"]))
-      foreach($_SESSION["caps"] as $key => $value){
+   exec("ls caps | grep -v __ 2>&1 ", $output , $error);
+   if($error == 0)
+      foreach($output as $fileName){
 ?>
-        <option><?echo $key;?></option>
+        <option><?echo $fileName;?></option>
 <?
    }
 ?>

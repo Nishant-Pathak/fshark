@@ -28,13 +28,12 @@ class nitro{
       $this->send_response();
    }
 
-   private function processCapReq($tmp_file_name, $disp_filter){
+   private function processCapReq($file_name, $disp_filter){
       $capResopnse = array();
-      $file_name = $_SESSION["caps"][$tmp_file_name];
       $output;
       $error;
       if($disp_filter != "" && $disp_filter != "undefined"){
-         exec("tshark -r "."caps/".$file_name." -R \"".$disp_filter."\" 2>&1 > caps/".$file_name.".txt", $output , $error);
+         exec("tshark -r "."caps/".$file_name." -R \"".$disp_filter."\" 2>&1 > caps/__".$file_name, $output , $error);
          if($error != 0){
             $this->response->set_errorcode(-1);
             $this->response->set_message($output);
@@ -42,7 +41,7 @@ class nitro{
          }
       }
       else {
-         exec("tshark -r "."caps/".$file_name." 2>&1 > caps/".$file_name.".txt", $output , $error);
+         exec("tshark -r "."caps/".$file_name." 2>&1 > caps/__".$file_name, $output , $error);
          if($error != 0){
             $this->response->set_errorcode(-1);
             $this->response->set_message($output);
@@ -50,7 +49,7 @@ class nitro{
          }
       }
 
-      $lines = file("caps/".$file_name.".txt");
+      $lines = file("caps/__".$file_name);
       $colors = array("#ff7f2a", "#ffd332", "#1bae44", "#008fc7",
                       "#09c0e3", "#CC5480", "#ef3124", "#ffbe00",
                       "#db4c3c", "#c5881c", "#6a93c7", "#386398",
