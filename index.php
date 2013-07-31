@@ -38,7 +38,7 @@
                     <li class="active"><a href="/">Home</a></li>
                     <li><a href="explore.php">Explore</a></li>
                     <li><a href="about.php">About</a></li>
-                    <li><a href="conttact.php">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
         </div>
