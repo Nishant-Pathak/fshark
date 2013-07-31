@@ -24,11 +24,11 @@ class nitro{
          $this->send_response();
          exit(0);
       }
-      $this->processCapReq($args["cap"],$args["filter"]);
+      $this->processCapReq($args["cap"],$args["filter"],$args["IsProtocolColorScheme"]);
       $this->send_response();
    }
 
-   private function processCapReq($file_name, $disp_filter){
+   private function processCapReq($file_name, $disp_filter, $colorCoding){
       $capResopnse = array();
       $output;
       $error;
@@ -59,9 +59,10 @@ class nitro{
                       "#009999", "#cc3333", "#9933ff", "#ff0000",
                       "#0000ff", "#00ff00", "#ffcc99", "#999999",
                       "#ff3333", "#6666ff", "#ffff00", "#000000");
-
+      
+      $defaultColorArray = array( "#dff0d8", "#f2dede", "#d9edf7", "#faf2cc");
       $protoArr = array();
-
+      $packetIndex = 0;
       if(count($lines) != 0){
          foreach ($lines as $line_num => $line) {
             $returnValue = preg_split('/( | -> |->)/', $line, 7, PREG_SPLIT_NO_EMPTY);
@@ -72,9 +73,13 @@ class nitro{
             $proto = $returnValue[4];
             $length = $returnValue[5];
             $info = $returnValue[6];
-            if(!in_array($proto, $protoArr))
-               array_push($protoArr,$proto);
-            $color = $colors[array_search($proto, $protoArr)];
+            if($colorCoding == "true"){
+               if(!in_array($proto, $protoArr))
+                  array_push($protoArr,$proto);
+               $color = $colors[array_search($proto, $protoArr)];
+            } else {
+               $color = $defaultColorArray[$packetIndex++ % 4];
+            }
             $capResopnse[$line_num] = array("number" => $pktnum, "time"   => $time,
                                         "src"    => $src       , "dst"    => $dst,
                                         "proto"  => $proto     , "length" => $length,

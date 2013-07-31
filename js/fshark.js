@@ -8,10 +8,6 @@ function uploadCapController($scope){
 
 }
 
-function navigationbar($scope){
-  
-}
-
 function explorepkt($scope, $http, $templateCache, $cookies){
 
    $scope.maxPacketsToDisplay = 2000;             // due to browser performance
@@ -55,7 +51,9 @@ function explorepkt($scope, $http, $templateCache, $cookies){
       }
       $scope.code = null;
       $scope.response = null;
-      $scope.url = 'nitro.php?cap='+$scope.cap+'&filter='+$scope.filter;
+      $scope.url =  'nitro.php?cap='         + $scope.cap
+                   +'&filter='               + $scope.filter
+                   +'&IsProtocolColorScheme='+ $scope.IsProtocolColorScheme;
  
       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
          success(function(data, status) {
