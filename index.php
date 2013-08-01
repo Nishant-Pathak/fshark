@@ -86,6 +86,7 @@ include_once("navbar.php");
         <h3>Usage</h3>
         <ul>
             <li>No restriction on upload file size.</li>
+            <li>File name should be a <strong> single string (without space) </strong>.</li>
             <li>Uploaded files will be deleted automatically once you close the browser.</li>
             <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.</li>
         </ul>
