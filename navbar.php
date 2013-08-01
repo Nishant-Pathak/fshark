@@ -26,4 +26,3 @@ $path = substr($_SERVER['REQUEST_URI'],1);
     </div>
   </div>
 </div>
-<div class="container">
