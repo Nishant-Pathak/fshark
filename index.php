@@ -20,7 +20,7 @@ include_once("navbar.php");
                 <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
                     <i class="icon-plus icon-white"></i>
                     <span>Add files...</span>
-                    <input type="file" name="files[]" multiple ng-disabled="disabled">
+                    <input type="file" name="files[]" multiple ng-disabled="disabled" accept=".pcap, .gz">
                 </span>
                 <button type="button" class="btn btn-primary start" data-ng-click="submit()">
                     <i class="icon-upload icon-white"></i>
