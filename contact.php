@@ -4,7 +4,7 @@ include_once("include/headangular.php");
 include_once("include/header.php");
 include_once("navbar.php");
 ?>
-<div>
+<div class="container">
 <address>
   <strong>Citrix R&D</strong><br>
   #33 Ulsoor Road<br>
@@ -25,7 +25,7 @@ include_once("navbar.php");
 </address>
 
 <hr />
-<div>
+</div>
 <?
 include_once("include/footer.php");
 ?>
