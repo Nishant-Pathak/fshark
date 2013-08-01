@@ -1,4 +1,3 @@
-  </div>        <!--  wrapper ends here      -->
   <div id="footer">
     <div class="container">
       <p>&copy; WebShark - 2013 </p>
