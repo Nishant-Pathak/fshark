@@ -4,6 +4,7 @@ include_once("include/headwithoutangular.php");
 include_once("include/header.php");
 include_once("navbar.php");
 ?>
+<div class="container">
         <h1>Cloud Trace</h1>
         <h2 class="lead">Packet analyzer</h2>
         <blockquote>
@@ -89,6 +90,11 @@ include_once("navbar.php");
             <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.</li>
         </ul>
     </div>
+</div>
+<div id="footer">
+  <div class="container">
+    <p>&copy; Cloud Trace - 2013 </p>
+  </div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
