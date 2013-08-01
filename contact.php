@@ -20,7 +20,7 @@ include_once("navbar.php");
   <a href="mailto:#">nishantkumar.pathak@citrix.com</a>
 </address>
 <address>
-  <strong>Siddharth</strong><br>
+  <strong>Siddharth G R</strong><br>
   <a href="mailto:#">siddharth.ramesh@citrix.com</a>
 </address>
 
