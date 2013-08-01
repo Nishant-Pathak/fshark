@@ -24,7 +24,6 @@ include_once("navbar.php");
   <a href="mailto:#">siddharth.ramesh@citrix.com</a>
 </address>
 
-<hr />
 </div>
 <?
 include_once("include/footer.php");

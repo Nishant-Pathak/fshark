@@ -1,5 +1,6 @@
-  <div id="footer">
+  <div class="footer">
     <div class="container">
+      <hr />
       <p>&copy; WebShark - 2013 </p>
     </div>
   </div>
