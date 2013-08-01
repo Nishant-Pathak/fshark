@@ -94,6 +94,7 @@ include_once("navbar.php");
 </div>
 <div id="footer">
   <div class="container">
+    <hr />
     <p>&copy; WebShark - 2013 </p>
   </div>
 </div>
