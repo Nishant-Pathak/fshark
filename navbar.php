@@ -11,7 +11,7 @@ $path = substr($_SERVER['REQUEST_URI'],1);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-    <a class="brand" href="/">Cloud Trace</a>
+    <a class="brand" href="/">WebShark</a>
          <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Guest</a>

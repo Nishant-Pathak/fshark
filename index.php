@@ -5,7 +5,7 @@ include_once("include/header.php");
 include_once("navbar.php");
 ?>
 <div class="container">
-        <h1>Cloud Trace</h1>
+        <h1>WebShark</h1>
         <h2 class="lead">Packet analyzer</h2>
         <blockquote>
             <p>Supports tshark based filtering.<br>
@@ -93,7 +93,7 @@ include_once("navbar.php");
 </div>
 <div id="footer">
   <div class="container">
-    <p>&copy; Cloud Trace - 2013 </p>
+    <p>&copy; WebShark - 2013 </p>
   </div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>

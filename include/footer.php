@@ -1,7 +1,7 @@
   </div>        <!--  wrapper ends here      -->
   <div id="footer">
     <div class="container">
-      <p>&copy; Cloud Trace - 2013 </p>
+      <p>&copy; WebShark - 2013 </p>
     </div>
   </div>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
