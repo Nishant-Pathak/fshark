@@ -96,7 +96,7 @@ class nitro{
       foreach($args as $key => $value){
          if($key == "cap" && $value == "undefined"){
             $this->response->set_errorcode(-1);
-            $this->response->set_message("Plese provide valid cap file");
+            $this->response->set_message("Please provide valid cap file");
             return true;
          }
       }
