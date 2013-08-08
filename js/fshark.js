@@ -53,7 +53,8 @@ function explorepkt($scope, $http, $templateCache, $cookies){
       $scope.response = null;
       $scope.url =  'nitro.php?cap='         + $scope.cap
                    +'&filter='               + $scope.filter
-                   +'&IsProtocolColorScheme='+ $scope.IsProtocolColorScheme;
+                   +'&IsProtocolColorScheme='+ $scope.IsProtocolColorScheme
+                   +'&operation=showTable';
  
       $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
          success(function(data, status) {
@@ -87,3 +88,67 @@ function explorepkt($scope, $http, $templateCache, $cookies){
    };
 }
 
+function graphs($scope, $http, $templateCache){
+
+   $scope.chartType;
+   $scope.title;
+   $scope.categories;
+   $scope.yTitle;
+   $scope.series;
+
+   $scope.defaultPlot = function(){
+   };
+
+   $scope.plotGraph = function(series){
+      $(document).ready(function (seriesData, seriesName) {
+         $('#graphs').highcharts({
+            chart: {
+               type: 'area'
+            },
+            title: {
+               text: $scope.xaxis + " Vs " + $scope.yaxis
+            },
+            xAxis: {
+             //  categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+               title: {
+                  text: $scope.yaxis
+               }
+            },
+            series: $scope.series
+/*            series: [{
+               name: $scope.data.series[0].name,
+               data: $scope.data.series[0].data,
+            }]  */
+         });
+      });
+   };
+
+   $scope.fetchAndPlot = function(){
+      $scope.method = "GET";
+      $scope.url =  'nitro.php?cap='   + $scope.cap
+                   +'&filter='         + $scope.filter
+                   +'&xaxis='          + $scope.xaxis
+                   +'&yaxis='          + $scope.yaxis
+                   +'&operation=plotGraph';
+      $scope.ShowSpinner = true;                       //add show spinne
+      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+         success(function(data, status) {
+            $scope.ShowSpinner = false;
+            if(data.errorcode == -1 ){
+               return;                // add alert here
+            }
+            $scope.series = [];
+            for(var i = 0; i < data.series.length; i++){
+               $scope.series.push({name: data.series[i].name, data: data.series[i].data });
+            }
+            $scope.plotGraph();
+         }).
+         error(function(data, status) {
+            $scope.ShowSpinner = false;
+            $scope.data = data || "Unable to process request.";    //add alert here
+         }
+      );
+   };
+}

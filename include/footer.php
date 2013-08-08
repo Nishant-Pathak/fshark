@@ -9,5 +9,6 @@
   <script type="text/javascript" src="../js/angular.min.js"></script>
   <script type="text/javascript" src="../js/ui-bootstrap-tpls-0.4.0.min.js"></script>
   <script type="text/javascript" src="../js/fshark.js"></script>
+  <script src="js/highcharts.js"></script>
 </body>
 </html>

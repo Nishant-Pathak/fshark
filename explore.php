@@ -6,6 +6,7 @@ include_once("navbar.php");
 
 ?>
    <div ng-controller="explorepkt" ng-init="defaultFetch()" class="container">
+    <form class="form-inline">
       Capture Files: <select ng-model="cap">
 <?
    exec("ls caps | grep -v __ 2>&1 ", $output , $error);
@@ -18,8 +19,10 @@ include_once("navbar.php");
 ?>
       </select>
       Filter: <input type="text" ng-model="filter" typeahead="filter for filter in availableFilters | filter:$viewValue">
-      Packet Coloring Enable: <input type="checkbox" ng-model="IsProtocolColorScheme"></br>
-      <button class="btn" ng-click="fetch()">Filter</button><hr />
+      Packet Coloring Enable: <input type="checkbox" ng-model="IsProtocolColorScheme">
+      <button class="btn" ng-click="fetch()">Filter</button>
+      </form>
+      <hr />
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
       <pagination boundary-links="true" on-select-page="pageChanged(page)" num-pages="noOfPages" current-page="currentPage" class="pagination-right" previous-text="'&lsaquo;'" next-text="'&rsaquo;'" first-text="'&laquo;'" last-text="'&raquo;'"></pagination>
 
