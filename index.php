@@ -106,7 +106,7 @@ include_once("navbar.php");
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
 <script src="http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-<script src="http://blueimp.github.io/cdn/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- blueimp Gallery script -->
 <script src="http://blueimp.github.io/Gallery/js/blueimp-gallery.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
